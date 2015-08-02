@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-	"http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Lightning Timer</title>
@@ -56,6 +55,16 @@ function countdown() {
             document.body.className = 'warning';
         }
         window.setTimeout(countdown, 1000);
+
+        // Since we've already decremented the count, we're looking for zero
+        // for the last "frame" before the deadline.
+        if (count == 0) {
+            window.setTimeout(function () {
+                document.getElementById("foot").className = "drop";
+            }, 700);
+        } else if (count == 2) {
+            document.getElementById("music").play();
+        }
     } else {
         document.body.className = 'deadline';
         var obj = document.getElementById("countdown");
@@ -96,6 +105,20 @@ body.deadline {
     background-color: red;
     color: white;
 }
+#foot {
+    position: absolute;
+    width: 100vw;
+    bottom: 100vh;
+    left: 0;
+    transition: bottom 300ms linear;
+    pointer-events: none;
+}
+#foot.drop {
+    bottom: 0;
+}
+#music {
+    display: none;
+}
 </style>
 </head>
 <body>
@@ -103,5 +126,9 @@ body.deadline {
 
 <span id="countdown">Start</span>
 
+<img src="Monty_python_foot.png" id="foot">
+<audio id="music" preload="auto" src="liberty_bell_march.mp3">
+
 </body>
 </html>
+<!-- vim: set et ts=4 sw=4: -->
