@@ -27,10 +27,6 @@ function settime() {
     }
 }
 
-if ("onhashchange" in window) {
-    window.onhashchange = settime;
-}
-
 window.onload = function() {
     settime();
 
@@ -39,6 +35,10 @@ window.onload = function() {
         countdown();
     }
     document.getElementById('countdown').style.cursor = 'pointer';
+
+    window.onhashchange = function () {
+        location.reload();
+    };
 };
 
 function countdown() {
