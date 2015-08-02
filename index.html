@@ -62,8 +62,10 @@ function countdown() {
             window.setTimeout(function () {
                 document.getElementById("foot").className = "drop";
             }, 700);
-        } else if (count == 2) {
-            document.getElementById("music").play();
+        } else if (count == 3) {
+            window.setTimeout(function () {
+                document.getElementById("music").play();
+            }, 700);
         }
     } else {
         document.body.className = 'deadline';
@@ -127,7 +129,11 @@ body.deadline {
 <span id="countdown">Start</span>
 
 <img src="Monty_python_foot.png" id="foot">
-<audio id="music" preload="auto" src="liberty_bell_march.mp3">
+
+<audio id="music" preload="auto">
+    <source src="liberty_bell_march.mp3" type="audio/mpeg">
+    <source src="liberty_bell_march.ogg" type="audio/ogg">
+</audio>
 
 </body>
 </html>
