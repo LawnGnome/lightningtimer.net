@@ -35,8 +35,8 @@ if ("onhashchange" in window) {
 window.onload = function() {
     settime();
 
-    document.getElementById('countdown').onclick = function() {
-        this.onclick = null;
+    document.body.onclick = function() {
+        this.onclick = () => window.location.reload();
         countdown();
     }
     document.getElementById('countdown').style.cursor = 'pointer';
@@ -95,6 +95,19 @@ body.deadline {
     text-decoration: blink;
     background-color: red;
     color: white;
+}
+body {
+display: flex;
+height: 100vh;
+width: 100vw;
+display: flex;
+overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      font-family: Hack;
+      font-size: 50vh;
+}
+#countdown {
 }
 </style>
 </head>
